@@ -671,9 +671,13 @@
             }
             .ai-access h2 { font-size: 1.3em; }
             .ai-command {
-                font-size: 0.85em;
-                padding: 15px 20px;
-                word-break: break-all;
+                font-size: 0.75em;
+                padding: 12px 15px;
+                overflow-x: auto;
+                white-space: nowrap;
+                max-width: 100%;
+                display: block;
+                text-align: left;
             }
             
             /* Contribute */
@@ -758,11 +762,11 @@
     <!-- Stats Section -->
     <div class="stats-container">
         <div class="stat-card">
-            <div class="stat-number">66</div>
+            <div class="stat-number">69</div>
             <div class="stat-label">Total Skills</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">59</div>
+            <div class="stat-number">62</div>
             <div class="stat-label">Official</div>
         </div>
         <div class="stat-card">
@@ -1288,6 +1292,96 @@
                         </div>
                         <div class="skill-actions" onclick="event.stopPropagation()">
                             <button class="btn-sm btn-install" onclick="copyInstall('security-scanner')">Install</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cost Router (本地系统服务) -->
+                <div class="skill-card" data-category="infrastructure" onclick="openDetail('cost-router')">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background:linear-gradient(135deg,#00cec9,#81ecec)">💰</div>
+                        <div class="skill-meta-header">
+                            <div class="skill-name">
+                                Cost Router
+                                <span class="skill-tag" style="background:#e17055;color:#fff">LOCAL</span>
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">v1.0.0</span>
+                                <span class="skill-tag">Cost</span>
+                                <span class="skill-tag">Routing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-desc">
+                        成本感知模型路由 - 自动选择最便宜的模型，节省50-70% API费用。月度预算监控，超支自动降级。
+                    </div>
+                    <div class="skill-footer">
+                        <div class="skill-stats">
+                            <span class="skill-stat stars">⭐ 5.0</span>
+                            <span class="skill-stat">💻 本地安装</span>
+                        </div>
+                        <div class="skill-actions" onclick="event.stopPropagation()">
+                            <button class="btn-sm btn-install" onclick="copyInstall('cost-router')">Install</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Swarm (本地系统服务) -->
+                <div class="skill-card" data-category="infrastructure" onclick="openDetail('agent-swarm')">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)">🐝</div>
+                        <div class="skill-meta-header">
+                            <div class="skill-name">
+                                Agent Swarm
+                                <span class="skill-tag" style="background:#e17055;color:#fff">LOCAL</span>
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">v1.0.0</span>
+                                <span class="skill-tag">Swarm</span>
+                                <span class="skill-tag">Multi-Agent</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-desc">
+                        多代理调度器 - 协调多个子代理执行任务，Token消耗节省40-70%。休眠唤醒、任务分发、结果合并。
+                    </div>
+                    <div class="skill-footer">
+                        <div class="skill-stats">
+                            <span class="skill-stat stars">⭐ 5.0</span>
+                            <span class="skill-stat">💻 本地安装</span>
+                        </div>
+                        <div class="skill-actions" onclick="event.stopPropagation()">
+                            <button class="btn-sm btn-install" onclick="copyInstall('agent-swarm')">Install</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool Batcher (本地系统服务) -->
+                <div class="skill-card" data-category="infrastructure" onclick="openDetail('tool-batcher')">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="background:linear-gradient(135deg,#fdcb6e,#f9ca24)">⚡</div>
+                        <div class="skill-meta-header">
+                            <div class="skill-name">
+                                Tool Batcher
+                                <span class="skill-tag" style="background:#e17055;color:#fff">LOCAL</span>
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">v1.0.0</span>
+                                <span class="skill-tag">Batch</span>
+                                <span class="skill-tag">Parallel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-desc">
+                        工具批量执行 - 并行调用+结果裁剪，减少2-3倍轮次。复杂任务从5-10轮降到2-4轮。
+                    </div>
+                    <div class="skill-footer">
+                        <div class="skill-stats">
+                            <span class="skill-stat stars">⭐ 5.0</span>
+                            <span class="skill-stat">💻 本地安装</span>
+                        </div>
+                        <div class="skill-actions" onclick="event.stopPropagation()">
+                            <button class="btn-sm btn-install" onclick="copyInstall('tool-batcher')">Install</button>
                         </div>
                     </div>
                 </div>
