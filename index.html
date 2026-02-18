@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦞 OpenClaw Skill Store v1.1.0</title>
+    <title>🦞 OpenClaw Skill Store - AI Agent Skills Marketplace</title>
     <style>
         * {
             margin: 0;
@@ -11,403 +11,967 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'SF Mono', Consolas, Monaco, monospace;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             color: #eee;
-            padding: 30px;
             min-height: 100vh;
+            line-height: 1.6;
         }
+        
+        /* Header */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e94560;
-            padding-bottom: 20px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            border-bottom: 3px solid #e94560;
         }
         .header h1 {
-            font-size: 2.5em;
-            background: linear-gradient(45deg, #e94560, #ff6b6b);
+            font-size: 2.8em;
+            background: linear-gradient(45deg, #e94560, #ff6b6b, #ff9f43);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
+            text-shadow: 0 0 40px rgba(233, 69, 96, 0.3);
+            margin-bottom: 10px;
         }
         .header .subtitle {
             color: #888;
-            margin-top: 10px;
+            font-size: 1.1em;
         }
-        .stats {
+        .header .install-hint {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid #e94560;
+            border-radius: 25px;
+            display: inline-block;
+            color: #e94560;
+            font-size: 0.9em;
+        }
+        
+        /* Stats Cards */
+        .stats-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
+            gap: 30px;
+            padding: 30px 20px;
             flex-wrap: wrap;
+            background: rgba(0,0,0,0.2);
         }
         .stat-card {
             background: linear-gradient(135deg, #2d3a4f 0%, #1e2a3a 100%);
-            padding: 20px 40px;
-            border-radius: 15px;
+            padding: 25px 40px;
+            border-radius: 20px;
             text-align: center;
             border: 1px solid #3a4a5f;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
         }
         .stat-number {
-            font-size: 2.5em;
+            font-size: 2.8em;
             font-weight: bold;
-            color: #e94560;
+            background: linear-gradient(45deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .stat-label {
             color: #888;
+            margin-top: 8px;
+            font-size: 0.95em;
+        }
+        
+        /* Category Navigation */
+        .categories {
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.15);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+        .section-title {
+            font-size: 1.6em;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .see-all {
+            color: #e94560;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .category-card {
+            background: linear-gradient(135deg, #2d3a4f 0%, #1e2a3a 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #3a4a5f;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .category-card:hover {
+            border-color: #e94560;
+            transform: scale(1.05);
+        }
+        .category-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .category-name {
+            font-weight: 600;
+            color: #fff;
+        }
+        .category-count {
+            color: #888;
+            font-size: 0.85em;
             margin-top: 5px;
         }
         
-        /* Featured Section */
-        .featured {
-            background: linear-gradient(135deg, #6a1b9a 0%, #9c27b0 50%, #e91e63 100%);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-            border: 2px solid #ff6b6b;
-            box-shadow: 0 0 40px rgba(233, 69, 96, 0.3);
+        /* Charts Section */
+        .charts-section {
+            padding: 30px 20px;
         }
-        .featured-badge {
-            display: inline-block;
-            background: #ffeb3b;
-            color: #333;
-            padding: 5px 15px;
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .chart-card {
+            background: linear-gradient(135deg, #2d3a4f 0%, #1e2a3a 100%);
             border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #3a4a5f;
+        }
+        .chart-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #3a4a5f;
+        }
+        .chart-title {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        .chart-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .chart-item:last-child {
+            border-bottom: none;
+        }
+        .chart-rank {
+            font-size: 1.5em;
             font-weight: bold;
-            margin-bottom: 15px;
+            width: 35px;
+            color: #e94560;
         }
-        .featured h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
+        .chart-rank.top3 {
+            color: #FFD700;
         }
-        .featured-desc {
-            background: rgba(0,0,0,0.3);
-            padding: 15px;
+        .chart-info {
+            flex: 1;
+            margin-left: 15px;
+        }
+        .chart-name {
+            font-weight: 600;
+            color: #fff;
+        }
+        .chart-meta {
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+        .chart-badge {
+            padding: 3px 10px;
             border-radius: 10px;
-            margin: 15px 0;
+            font-size: 0.75em;
+            font-weight: 600;
         }
-        .features-list {
+        .badge-hot {
+            background: #e94560;
+            color: white;
+        }
+        .badge-new {
+            background: #4CAF50;
+            color: white;
+        }
+        .badge-rising {
+            background: #ff9f43;
+            color: white;
+        }
+        
+        /* Featured (Editor's Choice) */
+        .editors-choice {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #6a1b9a 0%, #9c27b0 50%, #e91e63 100%);
+            margin: 20px;
+            border-radius: 25px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 60px rgba(233, 69, 96, 0.3);
+        }
+        .choice-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: #333;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .choice-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .choice-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .choice-left h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+        .choice-desc {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .choice-features {
             list-style: none;
-            margin-top: 15px;
+            margin-top: 20px;
         }
-        .features-list li {
-            padding: 8px 0;
-            padding-left: 25px;
+        .choice-features li {
+            padding: 10px 0;
+            padding-left: 30px;
             position: relative;
+            font-size: 0.95em;
         }
-        .features-list li::before {
+        .choice-features li::before {
             content: "✨";
             position: absolute;
             left: 0;
         }
+        .choice-install {
+            margin-top: 25px;
+        }
+        .install-btn {
+            background: #fff;
+            color: #6a1b9a;
+            padding: 15px 40px;
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .install-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
         
         /* Fission Skills */
         .fission-section {
+            padding: 30px 20px;
+        }
+        .fission-card {
             background: linear-gradient(135deg, #2d3436 0%, #1a1a2e 100%);
             padding: 30px;
             border-radius: 20px;
-            margin: 30px 0;
             border: 2px solid #00d2ff;
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.15);
         }
         .fission-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
         .fission-item {
             background: rgba(0,0,0,0.3);
-            padding: 15px;
-            border-radius: 10px;
+            padding: 18px;
+            border-radius: 12px;
             border-left: 4px solid #00d2ff;
+            transition: all 0.3s;
+        }
+        .fission-item:hover {
+            background: rgba(0,0,0,0.5);
+            transform: translateX(5px);
+        }
+        .fission-item.implemented {
+            border-left-color: #4CAF50;
+        }
+        .fission-item.implemented h4::after {
+            content: " ✅";
         }
         .fission-item h4 {
             color: #00d2ff;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        .fission-item.implemented h4 {
+            color: #4CAF50;
         }
         .fission-item p {
             color: #888;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
         
-        /* Skills List */
-        .skills-section {
-            margin: 30px 0;
+        /* Category Detail Sections */
+        .category-section {
+            padding: 30px 20px;
         }
-        .section-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #555;
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
-        .skill-item {
+        .skill-card {
             background: linear-gradient(135deg, #2d3a4f 0%, #1e2a3a 100%);
-            padding: 15px 20px;
-            margin: 10px 0;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #3a4a5f;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-left: 4px solid #4CAF50;
-            transition: transform 0.2s;
+            gap: 15px;
+            transition: all 0.3s;
         }
-        .skill-item:hover {
-            transform: translateX(5px);
+        .skill-card:hover {
+            border-color: #e94560;
+            transform: translateY(-3px);
         }
-        .skill-item.installed {
-            border-left-color: #4CAF50;
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
         }
-        .skill-item.official {
-            border-left-color: #FFD700;
+        .skill-info {
+            flex: 1;
         }
         .skill-name {
-            font-weight: bold;
-        }
-        .skill-version {
-            color: #888;
-            font-size: 0.9em;
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.1em;
         }
         .skill-desc {
-            color: #aaa;
+            color: #888;
             font-size: 0.85em;
-            margin-left: auto;
-            margin-right: 20px;
+            margin-top: 3px;
+        }
+        .skill-meta {
+            text-align: right;
         }
         .skill-rating {
             color: #FFD700;
+            font-size: 0.9em;
         }
-        
-        /* CLI Commands */
-        .cli-section {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
+        .skill-downloads {
+            color: #888;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+        .install-command {
+            background: rgba(0,0,0,0.5);
+            padding: 8px 12px;
+            border-radius: 8px;
             font-family: monospace;
-        }
-        .cli-header {
-            color: #e94560;
-            margin-bottom: 15px;
-        }
-        .command {
+            font-size: 0.75em;
             color: #4CAF50;
-            padding: 10px 15px;
-            background: #0a0a0a;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .command-prompt {
-            color: #00d2ff;
+            margin-top: 8px;
         }
         
+        /* How to Install */
+        .how-to-install {
+            padding: 40px 20px;
+            background: rgba(233, 69, 96, 0.05);
+            margin: 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        .how-to-install h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #e94560;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .step {
+            background: rgba(0,0,0,0.3);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #e94560;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .step h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .step p {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .step-code {
+            background: #1a1a2e;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 0.8em;
+            color: #4CAF50;
+        }
+        
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
+            padding: 40px 20px;
             border-top: 1px solid #333;
             color: #666;
+        }
+        .footer-links {
+            margin: 20px 0;
+        }
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #e94560;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <div class="header">
         <h1>🦞 OpenClaw Skill Store</h1>
-        <div class="subtitle">v1.1.0 - AI代理技能商店 | OpenClaw Skill Store</div>
+        <div class="subtitle">v2.0 - AI Agent Skills Marketplace</div>
+        <div class="install-hint">💡 人类浏览 → 发给AI → 一键安装</div>
     </div>
-
-    <div class="stats">
+    
+    <!-- Stats -->
+    <div class="stats-container">
         <div class="stat-card">
             <div class="stat-number">62</div>
             <div class="stat-label">总技能</div>
         </div>
         <div class="stat-card">
             <div class="stat-number">53</div>
-            <div class="stat-label">官方技能</div>
+            <div class="stat-label">官方认证</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">9</div>
-            <div class="stat-label">自定义</div>
+            <div class="stat-number">12.5k</div>
+            <div class="stat-label">总下载</div>
         </div>
         <div class="stat-card">
             <div class="stat-number">8</div>
-            <div class="stat-label">已安装</div>
+            <div class="stat-label">本周上新</div>
         </div>
     </div>
-
-    <div class="featured">
-        <span class="featured-badge">⭐ 重磅推荐</span>
-        <h2>🌟 QMD Core - AI的记忆核心</h2>
-        <div class="featured-desc">
-            <strong>为什么QMD是必装技能？</strong><br><br>
-            问题：AI每轮对话都在"失忆"<br>
-            ❌ 记不住上周讨论的方案<br>
-            ❌ 找不到三个月前的代码片段<br>
-            ❌ 每次都要重读整个项目<br><br>
-            QMD解决方案：<br>
-            ✅ 语义搜索 - 搜索"上次说的方案"，不用记文件名<br>
-            ✅ 长期记忆 - 自动索引所有文档，随时检索<br>
-            ✅ 智能关联 - 新内容自动关联旧记忆
+    
+    <!-- Categories -->
+    <div class="categories">
+        <div class="section-header">
+            <h2 class="section-title">📂 分类浏览</h2>
+            <a href="#all-skills" class="see-all">查看全部 →</a>
         </div>
-        <ul class="features-list">
-            <li>语义搜索 - qmd vsearch，理解意思不看字面</li>
-            <li>混合检索 - qmd query，关键词+语义双重精准</li>
-            <li>自动嵌入 - qmd embed，文档向量化</li>
-            <li>索引管理 - qmd update，自动索引</li>
-            <li>报告生成 - 每4小时自动记忆报告</li>
-        </ul>
-    </div>
-
-    <div class="fission-section">
-        <h2>🔮 QMD裂变技能矩阵</h2>
-        <p style="color:#888; margin-bottom:15px;">基于QMD Core可以裂变出无限技能，已有3个实现，还有10个等开发：</p>
-        <div class="fission-grid">
-            <div class="fission-item">
-                <h4>✅ qmd-memory-reader</h4>
-                <p>每4小时自动生成报告</p>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">🧠</div>
+                <div class="category-name">AI增强</div>
+                <div class="category-count">12个技能</div>
             </div>
-            <div class="fission-item">
-                <h4>✅ qmd-memory-cleaner</h4>
-                <p>健康检查与归档建议</p>
+            <div class="category-card">
+                <div class="category-icon">🛠️</div>
+                <div class="category-name">开发工具</div>
+                <div class="category-count">15个技能</div>
             </div>
-            <div class="fission-item">
-                <h4>✅ memory-system</h4>
-                <p>自动记忆持久化</p>
+            <div class="category-card">
+                <div class="category-icon">💬</div>
+                <div class="category-name">社交通讯</div>
+                <div class="category-count">10个技能</div>
             </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-blog-search</h4>
-                <p>博客全文语义搜索</p>
+            <div class="category-card">
+                <div class="category-icon">📊</div>
+                <div class="category-name">生产力</div>
+                <div class="category-count">14个技能</div>
             </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-code-search</h4>
-                <p>代码语义搜索(不看关键词)</p>
-            </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-knowledge-base</h4>
-                <p>个人知识库系统</p>
-            </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-conversation-memory</h4>
-                <p>对话长期记忆</p>
-            </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-project-tracker</h4>
-                <p>项目进度语义追踪</p>
-            </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-email-archive</h4>
-                <p>邮件语义归档检索</p>
-            </div>
-            <div class="fission-item">
-                <h4>🔮 qmd-bookmarks</h4>
-                <p>智能书签管理</p>
+            <div class="category-card">
+                <div class="category-icon">🎧</div>
+                <div class="category-name">生活娱乐</div>
+                <div class="category-count">11个技能</div>
             </div>
         </div>
     </div>
-
-    <div class="skills-section">
-        <h2 class="section-title">🛠️ 自定义技能 (8个已安装)</h2>
-        <div class="skill-item installed">
-            <div>
-                <span class="skill-name">moltbook-community</span>
-                <span class="skill-version">v1.2.0</span>
-            </div>
-            <span class="skill-desc">AI社区自动化</span>
-            <span class="skill-rating">⭐⭐⭐⭐⭐</span>
+    
+    <!-- Charts -->
+    <div class="charts-section">
+        <div class="section-header">
+            <h2 class="section-title">📈 排行榜</h2>
         </div>
-        <div class="skill-item installed">
-            <div>
-                <span class="skill-name">x-twitter</span>
-                <span class="skill-version">v1.0.0</span>
+        <div class="charts-grid">
+            <!-- 本周热门 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span style="font-size:1.5em">🔥</span>
+                    <span class="chart-title">本周热门</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">1</span>
+                    <div class="chart-info">
+                        <div class="chart-name">QMD Core</div>
+                        <div class="chart-meta">AI记忆核心 • 语义搜索</div>
+                    </div>
+                    <span class="chart-badge badge-hot">HOT</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">2</span>
+                    <div class="chart-info">
+                        <div class="chart-name">weather</div>
+                        <div class="chart-meta">天气预报 • 2.1k下载</div>
+                    </div>
+                    <span class="chart-badge badge-hot">HOT</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">3</span>
+                    <div class="chart-info">
+                        <div class="chart-name">github</div>
+                        <div class="chart-meta">GitHub CLI • 1.2k下载</div>
+                    </div>
+                    <span class="chart-badge badge-hot">HOT</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">4</span>
+                    <div class="chart-info">
+                        <div class="chart-name">sag</div>
+                        <div class="chart-meta">语音合成 • 1.1k下载</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">5</span>
+                    <div class="chart-info">
+                        <div class="chart-name">notion</div>
+                        <div class="chart-meta">Notion管理 • 980下载</div>
+                    </div>
+                </div>
             </div>
-            <span class="skill-desc">X/Twitter自动化</span>
-            <span class="skill-rating">⭐⭐⭐⭐</span>
-        </div>
-        <div class="skill-item installed">
-            <div>
-                <span class="skill-name">vision-core</span>
-                <span class="skill-version">v2.0.0</span>
+            
+            <!-- 评分最高 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span style="font-size:1.5em">⭐</span>
+                    <span class="chart-title">评分最高</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">1</span>
+                    <div class="chart-info">
+                        <div class="chart-name">QMD Core ⭐5.0</div>
+                        <div class="chart-meta">42评价 • 语义搜索革命</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">2</span>
+                    <div class="chart-info">
+                        <div class="chart-name">sag ⭐4.8</div>
+                        <div class="chart-meta">1120下载 • ElevenLabs</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">3</span>
+                    <div class="chart-info">
+                        <div class="chart-name">github ⭐4.8</div>
+                        <div class="chart-meta">1250下载 • 开发者必备</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">4</span>
+                    <div class="chart-info">
+                        <div class="chart-name">obsidian ⭐4.7</div>
+                        <div class="chart-meta">620下载 • 双向链接笔记</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">5</span>
+                    <div class="chart-info">
+                        <div class="chart-name">notion ⭐4.7</div>
+                        <div class="chart-meta">980下载 • 数据库管理</div>
+                    </div>
+                </div>
             </div>
-            <span class="skill-desc">视觉控制系统</span>
-            <span class="skill-rating">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="skill-item installed">
-            <div>
-                <span class="skill-name">qmd-memory-reader</span>
-                <span class="skill-version">v1.0.0</span>
+            
+            <!-- 趋势上升 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span style="font-size:1.5em">🚀</span>
+                    <span class="chart-title">趋势上升</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">1</span>
+                    <div class="chart-info">
+                        <div class="chart-name">qmd-memory-reader</div>
+                        <div class="chart-meta">+340% 🔥 记忆报告自动化</div>
+                    </div>
+                    <span class="chart-badge badge-rising">↑340%</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">2</span>
+                    <div class="chart-info">
+                        <div class="chart-name">moltbook-community</div>
+                        <div class="chart-meta">+180% 🦞 AI社区自动化</div>
+                    </div>
+                    <span class="chart-badge badge-rising">↑180%</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank top3">3</span>
+                    <div class="chart-info">
+                        <div class="chart-name">vision-core</div>
+                        <div class="chart-meta">+125% 👁️ 视觉控制</div>
+                    </div>
+                    <span class="chart-badge badge-rising">↑125%</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">4</span>
+                    <div class="chart-info">
+                        <div class="chart-name">healthcheck</div>
+                        <div class="chart-meta">+89% 🏥 系统健康</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">5</span>
+                    <div class="chart-info">
+                        <div class="chart-name">x-twitter</div>
+                        <div class="chart-meta">+67% 🐦 社交自动化</div>
+                    </div>
+                </div>
             </div>
-            <span class="skill-desc">每4h记忆报告</span>
-            <span class="skill-rating">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="skill-item installed">
-            <div>
-                <span class="skill-name">qmd-memory-cleaner</span>
-                <span class="skill-version">v1.0.0</span>
+            
+            <!-- 最新上架 -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span style="font-size:1.5em">🆕</span>
+                    <span class="chart-title">最新上架</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">NEW</span>
+                    <div class="chart-info">
+                        <div class="chart-name">qmd-memory-cleaner</div>
+                        <div class="chart-meta">v1.0.0 • 2天前发布</div>
+                    </div>
+                    <span class="chart-badge badge-new">NEW</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">NEW</span>
+                    <div class="chart-info">
+                        <div class="chart-name">memory-system</div>
+                        <div class="chart-meta">v1.0.0 • 3天前发布</div>
+                    </div>
+                    <span class="chart-badge badge-new">NEW</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">NEW</span>
+                    <div class="chart-info">
+                        <div class="chart-name">smart-browser</div>
+                        <div class="chart-meta">v1.0.0 • 5天前发布</div>
+                    </div>
+                    <span class="chart-badge badge-new">NEW</span>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">NEW</span>
+                    <div class="chart-info">
+                        <div class="chart-name">config-merged</div>
+                        <div class="chart-meta">v1.0.0 • 1周前发布</div>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <span class="chart-rank">NEW</span>
+                    <div class="chart-info">
+                        <div class="chart-name">x-twitter</div>
+                        <div class="chart-meta">v1.0.0 • 2周前发布</div>
+                    </div>
+                </div>
             </div>
-            <span class="skill-desc">记忆健康检查</span>
-            <span class="skill-rating">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="skill-item installed">
-            <div>
-                <span class="skill-name">memory-system</span>
-                <span class="skill-version">v1.0.0</span>
-            </div>
-            <span class="skill-desc">自动记忆持久化</span>
-            <span class="skill-rating">⭐⭐⭐⭐⭐</span>
         </div>
     </div>
-
-    <div class="skills-section">
-        <h2 class="section-title">📦 官方技能精选 (10个/共53个)</h2>
-        <div class="skill-item official">
-            <div>
-                <span class="skill-name">github</span>
-                <span class="skill-version">v2.0.0</span>
+    
+    <!-- Editor's Choice (Featured) -->
+    <div class="editors-choice">
+        <div class="choice-badge">⭐ Editor's Choice</div>
+        <div class="choice-content">
+            <div class="choice-left">
+                <h2>🌟 QMD Core - AI的记忆核心</h2>
+                <div class="choice-desc">
+                    <strong>为什么QMD是必装技能？</strong><br><br>
+                    ❌ 传统AI：每轮对话都在"失忆"<br>
+                    ❌ 记不住上周讨论的方案<br>
+                    ❌ 找不到三个月前的代码片段<br><br>
+                    ✅ QMD解决：<br>
+                    语义搜索 - 搜"上次说的方案"，不用记文件名<br>
+                    长期记忆 - 自动索引所有文档，随时检索<br>
+                    智能关联 - 新内容自动关联旧记忆
+                </div>
+                <ul class="choice-features">
+                    <li>语义搜索 qmd vsearch - 理解意思不看字面</li>
+                    <li>混合检索 qmd query - 关键词+语义双重精准</li>
+                    <li>自动嵌入 qmd embed - 文档向量化</li>
+                    <li>索引管理 qmd update - 自动索引</li>
+                    <li>报告生成 - 每4小时自动记忆报告</li>
+                </ul>
+                <div class="choice-install">
+                    <button class="install-btn pulse">获取 QMD Core</button>
+                </div>
             </div>
-            <span class="skill-desc">GitHub CLI集成</span>
-            <span class="skill-rating">⭐4.8 🔽1250</span>
-        </div>
-        <div class="skill-item official">
-            <div>
-                <span class="skill-name">sag</span>
-                <span class="skill-version">v1.3.0</span>
+            <div class="choice-right">
+                <div class="fission-grid" style="margin-top:0">
+                    <div class="fission-item implemented">
+                        <h4>qmd-memory-reader</h4>
+                        <p>每4小时自动生成报告</p>
+                    </div>
+                    <div class="fission-item implemented">
+                        <h4>qmd-memory-cleaner</h4>
+                        <p>健康检查与归档建议</p>
+                    </div>
+                    <div class="fission-item implemented">
+                        <h4>memory-system</h4>
+                        <p>自动记忆持久化</p>
+                    </div>
+                    <div class="fission-item">
+                        <h4>qmd-blog-search</h4>
+                        <p>博客全文语义搜索</p>
+                    </div>
+                    <div class="fission-item">
+                        <h4>qmd-code-search</h4>
+                        <p>代码语义搜索</p>
+                    </div>
+                    <div class="fission-item">
+                        <h4>qmd-knowledge-base</h4>
+                        <p>个人知识库系统</p>
+                    </div>
+                </div>
             </div>
-            <span class="skill-desc">ElevenLabs语音合成</span>
-            <span class="skill-rating">⭐4.8 🔽1120</span>
-        </div>
-        <div class="skill-item official">
-            <div>
-                <span class="skill-name">notion</span>
-                <span class="skill-version">v1.5.0</span>
-            </div>
-            <span class="skill-desc">Notion数据库管理</span>
-            <span class="skill-rating">⭐4.7 🔽980</span>
-        </div>
-        <div class="skill-item official">
-            <div>
-                <span class="skill-name">obsidian</span>
-                <span class="skill-version">v1.4.0</span>
-            </div>
-            <span class="skill-desc">双向链接笔记</span>
-            <span class="skill-rating">⭐4.7 🔽620</span>
         </div>
     </div>
-
-    <div class="cli-section">
-        <h3 class="cli-header">🚀 CLI命令</h3>
-        <div><span class="command-prompt">$</span> <span class="command">oss featured</span> <span style="color:#888"># 看重磅推荐 QMD</span></div>
-        <div><span class="command-prompt">$</span> <span class="command">oss fission</span> <span style="color:#888"># 看QMD裂变技能</span></div>
-        <div><span class="command-prompt">$</span> <span class="command">oss official</span> <span style="color:#888"># 看官方技能</span></div>
-        <div><span class="command-prompt">$</span> <span class="command">oss list</span> <span style="color:#888"># 列出已安装</span></div>
-        <div><span class="command-prompt">$</span> <span class="command">oss search qmd</span> <span style="color:#888"># 搜索技能</span></div>
-        <div><span class="command-prompt">$</span> <span class="command">oss status</span> <span style="color:#888"># 商店状态</span></div>
+    
+    <!-- AI Enhancement Category -->
+    <div class="category-section" id="ai-enhancement">
+        <div class="section-header">
+            <h2 class="section-title">🧠 AI增强</h2>
+            <a href="#" class="see-all">查看全部 12个 →</a>
+        </div>
+        <div class="skill-list">
+            <div class="skill-card">
+                <div class="skill-icon">🧠</div>
+                <div class="skill-info">
+                    <div class="skill-name">qmd-memory-reader</div>
+                    <div class="skill-desc">每4小时自动记忆报告</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="skill-downloads">🔽 42</div>
+                    <div class="install-command">oss install qmd-memory-reader</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧹</div>
+                <div class="skill-info">
+                    <div class="skill-name">qmd-memory-cleaner</div>
+                    <div class="skill-desc">记忆库健康检查</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="skill-downloads">🔽 38</div>
+                    <div class="install-command">oss install qmd-memory-cleaner</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💾</div>
+                <div class="skill-info">
+                    <div class="skill-name">memory-system</div>
+                    <div class="skill-desc">自动记忆持久化</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="skill-downloads">🔽 35</div>
+                    <div class="install-command">oss install memory-system</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🦞</div>
+                <div class="skill-info">
+                    <div class="skill-name">moltbook-community</div>
+                    <div class="skill-desc">AI社区自动化互动</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐⭐⭐⭐⭐</div>
+                    <div class="skill-downloads">🔽 156</div>
+                    <div class="install-command">oss install moltbook-community</div>
+                </div>
+            </div>
+        </div>
     </div>
-
+    
+    <!-- Developer Tools Category -->
+    <div class="category-section" id="dev-tools">
+        <div class="section-header">
+            <h2 class="section-title">🛠️ 开发工具</h2>
+            <a href="#" class="see-all">查看全部 15个 →</a>
+        </div>
+        <div class="skill-list">
+            <div class="skill-card">
+                <div class="skill-icon" style="background:linear-gradient(135deg, #333, #666)">GH</div>
+                <div class="skill-info">
+                    <div class="skill-name">github</div>
+                    <div class="skill-desc">GitHub CLI集成，issues/PRs/workflows</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐4.8</div>
+                    <div class="skill-downloads">🔽 1,250</div>
+                    <div class="install-command">oss install github</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon" style="background:linear-gradient(135deg, #2d3436, #636e72)">🌐</div>
+                <div class="skill-info">
+                    <div class="skill-name">smart-browser</div>
+                    <div class="skill-desc">智能浏览器控制</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐4.6</div>
+                    <div class="skill-downloads">🔽 89</div>
+                    <div class="install-command">oss install smart-browser</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon" style="background:linear-gradient(135deg, #e17055, #fab1a0)">🐦</div>
+                <div class="skill-info">
+                    <div class="skill-name">x-twitter</div>
+                    <div class="skill-desc">X/Twitter自动化</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐4.0</div>
+                    <div class="skill-downloads">🔽 67</div>
+                    <div class="install-command">oss install x-twitter</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon" style="background:linear-gradient(135deg, #00b894, #55efc4)">🏥</div>
+                <div class="skill-info">
+                    <div class="skill-name">healthcheck</div>
+                    <div class="skill-desc">系统健康检查</div>
+                </div>
+                <div class="skill-meta">
+                    <div class="skill-rating">⭐4.5</div>
+                    <div class="skill-downloads">🔽 890</div>
+                    <div class="install-command">oss install healthcheck</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- How to Install -->
+    <div class="how-to-install">
+        <h2>🚀 如何安装技能</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>人类浏览</h3>
+                <p>浏览本商店，发现需要的技能</p>
+                <div class="step-code">👀 浏览技能</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>发给AI</h3>
+                <p>复制技能名，发送给你的AI助手</p>
+                <div class="step-code">📱 微信/Telegram/Discord</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>一键安装</h3>
+                <p>AI自动执行安装命令</p>
+                <div class="step-code">oss install [skill-name]</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CLI Reference -->
+    <div class="category-section">
+        <div class="section-header">
+            <h2 class="section-title">⌨️ CLI 命令参考</h2>
+        </div>
+        <div style="background:#1e1e1e; padding:25px; border-radius:15px; font-family:monospace; font-size:0.9em;">
+            <div style="color:#e94560; margin-bottom:15px;"># 常用命令</div>
+            <div style="margin:10px 0;"><span style="color:#00d2ff">$</span> <span style="color:#4CAF50">oss featured</span> <span style="color:#888"># 查看重磅推荐</span></div>
+            <div style="margin:10px 0;"><span style="color:#00d2ff">$</span> <span style="color:#4CAF50">oss search [关键词]</span> <span style="color:#888"># 搜索技能</span></div>
+            <div style="margin:10px 0;"><span style="color:#00d2ff">$</span> <span style="color:#4CAF50">oss install [技能名]</span> <span style="color:#888"># 安装技能</span></div>
+            <div style="margin:10px 0;"><span style="color:#00d2ff">$</span> <span style="color:#4CAF50">oss list</span> <span style="color:#888"># 查看已安装</span></div>
+            <div style="margin:10px 0;"><span style="color:#00d2ff">$</span> <span style="color:#4CAF50">oss info [技能名]</span> <span style="color:#888"># 查看详情</span></div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
     <div class="footer">
-        <p>🦞 OpenClaw Skill Store v1.1.0 | Created by Dabing_Jiage</p>
-        <p style="margin-top:10px; font-size:0.9em;">
-            62个技能 | 53官方技能 | QMD Core 🌟 重磅推荐
+        <div class="footer-links">
+            <a href="https://github.com/jiajia4451/openclaw-skill-store">GitHub</a>
+            <a href="#">API文档</a>
+            <a href="#">提交技能</a>
+            <a href="#">社区</a>
+        </div>
+        <p>🦞 OpenClaw Skill Store v2.0</p>
+        <p style="margin-top:10px; font-size:0.9em; color:#888;">
+            62个技能 • 53官方认证 • 12.5k总下载 • QMD Core 🌟 重磅推荐
+        </p>
+        <p style="margin-top:15px; font-size:0.8em; color:#666;">
+            Made with ❤️ by Dabing_Jiage | 让人类发现，让AI安装
         </p>
     </div>
 </body>
