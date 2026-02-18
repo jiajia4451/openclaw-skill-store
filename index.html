@@ -135,6 +135,43 @@
             font-size: 0.9em;
             margin-top: 5px;
         }
+
+        /* Stats Section */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 40px;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px 50px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-card:hover {
+            border-color: rgba(233,69,96,0.3);
+            background: rgba(255,255,255,0.05);
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #e94560);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
         .hero-actions {
             display: flex;
             gap: 20px;
@@ -554,6 +591,18 @@
             /* Container */
             .container { padding: 40px 20px; }
             
+            /* Stats Section Mobile */
+            .stats-container {
+                gap: 15px;
+                padding: 40px 20px;
+            }
+            .stat-card {
+                padding: 20px 30px;
+                flex: 1;
+                min-width: 140px;
+            }
+            .stat-number { font-size: 1.8em; }
+            
             /* Section Headers */
             .section-header {
                 flex-direction: column;
@@ -705,6 +754,26 @@
             </div>
         </div>
     </section>
+
+    <!-- Stats Section -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-number">66</div>
+            <div class="stat-label">Total Skills</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">59</div>
+            <div class="stat-label">Official</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Featured</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">12k+</div>
+            <div class="stat-label">Downloads</div>
+        </div>
+    </div>
 
     <div class="container">
         <!-- AI Access Banner -->
