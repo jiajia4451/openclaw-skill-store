@@ -1,0 +1,11 @@
+[Unit]
+Description=Vision-Core Screenshot Monitor
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'while true; do inotifywait -e create ~/图片/ 2>/dev/null && echo "New screenshot detected"; sleep 1; done'
+Restart=always
+
+[Install]
+WantedBy=default.target

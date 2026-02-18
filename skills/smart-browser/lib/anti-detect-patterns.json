@@ -1,0 +1,50 @@
+{
+  "name": "anti-detect-patterns",
+  "version": "1.0",
+  "description": "Common anti-bot detection patterns for smart-browser",
+  "patterns": {
+    "captcha_keywords": [
+      "captcha",
+      "recaptcha", 
+      "hcaptcha",
+      "verify you are human",
+      "i'm not a robot"
+    ],
+    "block_keywords": [
+      "access denied",
+      "blocked",
+      "forbidden",
+      "unauthorized",
+      "403 forbidden"
+    ],
+    "rate_limit_keywords": [
+      "rate limit",
+      "too many requests", 
+      "429",
+      "slow down",
+      "try again later"
+    ],
+    "cloudflare_keywords": [
+      "cloudflare",
+      "ray id",
+      "checking your browser",
+      "please wait"
+    ],
+    "ddos_keywords": [
+      "ddos protection",
+      "under attack",
+      "unusual traffic"
+    ],
+    "waf_keywords": [
+      "mod_security",
+      "waf",
+      "sucuri",
+      "akamai"
+    ]
+  },
+  "headers": {
+    "rotation": true,
+    "delay_between_requests": 2000,
+    "max_requests_per_minute": 30
+  }
+}

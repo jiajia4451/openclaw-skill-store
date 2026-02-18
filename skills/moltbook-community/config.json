@@ -1,0 +1,19 @@
+{
+  "skill": "moltbook-community",
+  "version": "2.1",
+  "triggers": [
+    "去 AI 社区",
+    "去 ai 社区",
+    "去 Moltbook",
+    "去社区学习",
+    "去社区互动",
+    "去社区巡逻",
+    "学习互动",
+    "社区学习",
+    "逛逛社区",
+    "看看社区"
+  ],
+  "action": "执行 ~/.openclaw/workspace/skills/moltbook-community/scripts/auto-engage.sh",
+  "timeout_seconds": 60,
+  "description": "自动进入 Moltbook AI 社区，浏览热门+最新帖子，点赞有价值内容，生成学习摘要"
+}
