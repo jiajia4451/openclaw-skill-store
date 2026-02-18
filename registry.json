@@ -1,7 +1,7 @@
 {
   "version": "1.1.0",
-  "last_updated": "2026-02-18T14:00:00+08:00",
-  "official_count": 53,
+  "last_updated": "2026-02-18T19:00:00+08:00",
+  "official_count": 59,
   "custom_count": 9,
   "skills": [
     {
@@ -12,11 +12,20 @@
       "author": "Dabing_Jiage",
       "author_url": "https://moltbook.com/u/Dabing_Jiage",
       "category": "featured",
-      "tags": ["qmd", "memory", "embedding", "semantic-search", "featured"],
+      "tags": [
+        "qmd",
+        "memory",
+        "embedding",
+        "semantic-search",
+        "featured"
+      ],
       "source": "local",
       "path": "../workspace/skills/memory-system",
       "install_size": "58KB",
-      "dependencies": ["qmd", "ollama"],
+      "dependencies": [
+        "qmd",
+        "ollama"
+      ],
       "status": "stable",
       "installed": true,
       "downloads": 42,
@@ -51,11 +60,19 @@
       "description": "QMD完整记忆读取服务 - 每4小时自动生成报告",
       "author": "Dabing_Jiage",
       "category": "memory",
-      "tags": ["memory", "qmd", "backup", "cron"],
+      "tags": [
+        "memory",
+        "qmd",
+        "backup",
+        "cron"
+      ],
       "source": "local",
       "path": "../workspace/skills/qmd-memory-reader",
       "install_size": "15KB",
-      "dependencies": ["qmd", "cron"],
+      "dependencies": [
+        "qmd",
+        "cron"
+      ],
       "status": "stable",
       "installed": true,
       "downloads": 1,
@@ -71,11 +88,17 @@
       "description": "QMD记忆清理分析服务 - 健康检查与归档建议",
       "author": "Dabing_Jiage",
       "category": "memory",
-      "tags": ["memory", "cleanup", "maintenance"],
+      "tags": [
+        "memory",
+        "cleanup",
+        "maintenance"
+      ],
       "source": "local",
       "path": "../workspace/skills/qmd-memory-cleaner",
       "install_size": "12KB",
-      "dependencies": ["qmd"],
+      "dependencies": [
+        "qmd"
+      ],
       "status": "stable",
       "installed": true,
       "downloads": 1,
@@ -91,11 +114,19 @@
       "author": "Dabing_Jiage",
       "author_url": "https://moltbook.com/u/Dabing_Jiage",
       "category": "social",
-      "tags": ["community", "ai", "social", "automation"],
+      "tags": [
+        "community",
+        "ai",
+        "social",
+        "automation"
+      ],
       "source": "local",
       "path": "../workspace/skills/moltbook-community",
       "install_size": "45KB",
-      "dependencies": ["curl", "jq"],
+      "dependencies": [
+        "curl",
+        "jq"
+      ],
       "status": "stable",
       "installed": true,
       "downloads": 1,
@@ -109,11 +140,21 @@
       "description": "X/Twitter自动化 - 发推、点赞、转发训练",
       "author": "Dabing_Jiage",
       "category": "social",
-      "tags": ["twitter", "x", "automation", "social"],
+      "tags": [
+        "twitter",
+        "x",
+        "automation",
+        "social"
+      ],
       "source": "local",
       "path": "../workspace/skills/x-twitter",
       "install_size": "32KB",
-      "dependencies": ["xdotool", "xclip", "flameshot", "python3-opencv"],
+      "dependencies": [
+        "xdotool",
+        "xclip",
+        "flameshot",
+        "python3-opencv"
+      ],
       "status": "beta",
       "installed": true,
       "downloads": 1,
@@ -128,11 +169,19 @@
       "description": "视觉控制系统 - X11截图、浏览器控制",
       "author": "Dabing_Jiage",
       "category": "system",
-      "tags": ["vision", "x11", "browser", "automation"],
+      "tags": [
+        "vision",
+        "x11",
+        "browser",
+        "automation"
+      ],
       "source": "local",
       "path": "../workspace/skills/vision-core",
       "install_size": "28KB",
-      "dependencies": ["xdotool", "flameshot"],
+      "dependencies": [
+        "xdotool",
+        "flameshot"
+      ],
       "status": "stable",
       "installed": true,
       "downloads": 1,
@@ -146,7 +195,11 @@
       "description": "自动记忆持久化与恢复系统",
       "author": "Dabing_Jiage",
       "category": "memory",
-      "tags": ["memory", "backup", "system"],
+      "tags": [
+        "memory",
+        "backup",
+        "system"
+      ],
       "source": "local",
       "path": "../workspace/skills/memory-system",
       "install_size": "18KB",
@@ -164,11 +217,17 @@
       "description": "智能浏览器控制 - 自动化脚本",
       "author": "Dabing_Jiage",
       "category": "system",
-      "tags": ["browser", "automation", "chrome"],
+      "tags": [
+        "browser",
+        "automation",
+        "chrome"
+      ],
       "source": "local",
       "path": "../workspace/skills/smart-browser",
       "install_size": "22KB",
-      "dependencies": ["xdotool"],
+      "dependencies": [
+        "xdotool"
+      ],
       "status": "beta",
       "installed": true,
       "downloads": 1,
@@ -182,7 +241,10 @@
       "description": "配置合并工具",
       "author": "Dabing_Jiage",
       "category": "system",
-      "tags": ["config", "tools"],
+      "tags": [
+        "config",
+        "tools"
+      ],
       "source": "local",
       "path": "../workspace/skills/config-merged",
       "install_size": "8KB",
@@ -200,11 +262,18 @@
       "description": "【官方】GitHub CLI集成 - Issue/PR/Actions管理",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["github", "git", "devops", "official"],
+      "tags": [
+        "github",
+        "git",
+        "devops",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/github",
       "install_size": "2.1MB",
-      "dependencies": ["gh"],
+      "dependencies": [
+        "gh"
+      ],
       "status": "stable",
       "installed": false,
       "downloads": 1250,
@@ -219,7 +288,12 @@
       "description": "【官方】Notion集成 - 数据库和页面管理",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["notion", "notes", "database", "official"],
+      "tags": [
+        "notion",
+        "notes",
+        "database",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/notion",
       "install_size": "1.8MB",
@@ -238,7 +312,12 @@
       "description": "【官方】Slack机器人 - 频道消息管理",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["slack", "messaging", "bot", "official"],
+      "tags": [
+        "slack",
+        "messaging",
+        "bot",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/slack",
       "install_size": "1.5MB",
@@ -257,7 +336,12 @@
       "description": "【官方】Spotify控制 - 播放/暂停/搜索",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["spotify", "music", "media", "official"],
+      "tags": [
+        "spotify",
+        "music",
+        "media",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/spotify-player",
       "install_size": "890KB",
@@ -276,7 +360,12 @@
       "description": "【官方】Discord消息发送和频道管理",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["discord", "messaging", "bot", "official"],
+      "tags": [
+        "discord",
+        "messaging",
+        "bot",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/discord",
       "install_size": "1.2MB",
@@ -295,7 +384,12 @@
       "description": "【官方】Obsidian笔记 - 双向链接和图谱",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["obsidian", "notes", "markdown", "official"],
+      "tags": [
+        "obsidian",
+        "notes",
+        "markdown",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/obsidian",
       "install_size": "1.6MB",
@@ -314,7 +408,12 @@
       "description": "【官方】看板管理 - 任务和项目管理",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["trello", "project", "kanban", "official"],
+      "tags": [
+        "trello",
+        "project",
+        "kanban",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/trello",
       "install_size": "980KB",
@@ -333,7 +432,12 @@
       "description": "【官方】天气预报和查询",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["weather", "forecast", "tools", "official"],
+      "tags": [
+        "weather",
+        "forecast",
+        "tools",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/weather",
       "install_size": "320KB",
@@ -352,7 +456,12 @@
       "description": "【官方】系统健康检查和安全审计",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["security", "health", "audit", "official"],
+      "tags": [
+        "security",
+        "health",
+        "audit",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/healthcheck",
       "install_size": "1.1MB",
@@ -371,7 +480,12 @@
       "description": "【官方】ElevenLabs语音合成",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["tts", "voice", "elevenlabs", "official"],
+      "tags": [
+        "tts",
+        "voice",
+        "elevenlabs",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/sag",
       "install_size": "2.3MB",
@@ -390,17 +504,200 @@
       "description": "【官方】ClawHub CLI - 官方技能管理器",
       "author": "OpenClaw Official",
       "category": "official",
-      "tags": ["cli", "package-manager", "skills", "official"],
+      "tags": [
+        "cli",
+        "package-manager",
+        "skills",
+        "official"
+      ],
       "source": "official",
       "path": "~/.npm-global/lib/node_modules/openclaw/skills/clawhub",
       "install_size": "3.2MB",
-      "dependencies": ["npm"],
+      "dependencies": [
+        "npm"
+      ],
       "status": "stable",
       "installed": false,
       "downloads": 800,
       "rating": 4.7,
       "last_updated": "2024-11-25",
       "official": true
+    },
+    {
+      "id": "cost-router",
+      "name": "💰 Cost Router",
+      "version": "1.0.0",
+      "description": "成本感知模型路由 - 根据任务复杂度自动选择最优模型，节省50-70% API费用",
+      "author": "OpenClaw",
+      "category": "infrastructure",
+      "tags": [
+        "cost",
+        "routing",
+        "minimax",
+        "optimization",
+        "system"
+      ],
+      "source": "official",
+      "path": "skills/cost-router",
+      "install_size": "8KB",
+      "dependencies": [
+        "jq",
+        "bc"
+      ],
+      "status": "beta",
+      "installed": false,
+      "downloads": 0,
+      "rating": 5.0,
+      "last_updated": "2026-02-18",
+      "system_service": true,
+      "features": [
+        "任务复杂度自动评估",
+        "模型智能路由 (MiniMax/Kimi/GPT-4)",
+        "月度预算监控",
+        "超支自动降级",
+        "每日成本报告"
+      ]
+    },
+    {
+      "id": "agent-swarm",
+      "name": "🐝 Agent Swarm",
+      "version": "1.0.0",
+      "description": "多代理调度器 - 协调多个子代理执行任务，Token消耗节省40-70%",
+      "author": "OpenClaw",
+      "category": "infrastructure",
+      "tags": [
+        "swarm",
+        "multi-agent",
+        "coordination",
+        "system"
+      ],
+      "source": "official",
+      "path": "skills/agent-swarm",
+      "install_size": "10KB",
+      "dependencies": [
+        "jq"
+      ],
+      "status": "beta",
+      "installed": false,
+      "downloads": 0,
+      "rating": 5.0,
+      "last_updated": "2026-02-18",
+      "system_service": true,
+      "features": [
+        "子代理注册与心跳管理",
+        "任务分发 (并行/流水线/优先级)",
+        "代理休眠与唤醒",
+        "Swarm状态监控面板",
+        "多代理结果合并"
+      ]
+    },
+    {
+      "id": "tool-batcher",
+      "name": "⚡ Tool Batcher",
+      "version": "1.0.0",
+      "description": "工具批量执行器 - Parallel tool calling，减少2-3倍轮次",
+      "author": "OpenClaw",
+      "category": "infrastructure",
+      "tags": [
+        "batch",
+        "parallel",
+        "tools",
+        "optimization",
+        "system"
+      ],
+      "source": "official",
+      "path": "skills/tool-batcher",
+      "install_size": "9KB",
+      "dependencies": [
+        "jq"
+      ],
+      "status": "beta",
+      "installed": false,
+      "downloads": 0,
+      "rating": 5.0,
+      "last_updated": "2026-02-18",
+      "system_service": true,
+      "features": [
+        "批量工具调用",
+        "智能依赖排序",
+        "结果裁剪优化",
+        "并行执行队列",
+        "Token节省报告"
+      ]
+    },
+    {
+      "id": "prompt-cache-manager",
+      "name": "📦 Prompt Cache Manager",
+      "version": "1.0.0",
+      "description": "Prompt缓存管理 - 提升命中率70-90%，追踪热点Prompt",
+      "author": "OpenClaw",
+      "category": "productivity",
+      "tags": [
+        "cache",
+        "prompt",
+        "optimization",
+        "analytics"
+      ],
+      "source": "official",
+      "path": "skills/prompt-cache-manager",
+      "install_size": "6KB",
+      "dependencies": [],
+      "status": "stable",
+      "installed": false,
+      "downloads": 0,
+      "rating": 4.5,
+      "last_updated": "2026-02-18",
+      "system_service": false
+    },
+    {
+      "id": "discord-ui",
+      "name": "💬 Discord UI",
+      "version": "1.0.0",
+      "description": "Discord交互组件 - 按钮、选择菜单、模态框、附件支持",
+      "author": "OpenClaw",
+      "category": "social",
+      "tags": [
+        "discord",
+        "ui",
+        "components",
+        "bot"
+      ],
+      "source": "official",
+      "path": "skills/discord-ui",
+      "install_size": "5KB",
+      "dependencies": [],
+      "status": "stable",
+      "installed": false,
+      "downloads": 0,
+      "rating": 4.5,
+      "last_updated": "2026-02-18",
+      "system_service": false,
+      "requires": "OpenClaw v2026.2.15+"
+    },
+    {
+      "id": "security-scanner",
+      "name": "🔒 Security Scanner",
+      "version": "1.0.0",
+      "description": "安全扫描工具 - VirusTotal集成，检测100+安全风险",
+      "author": "OpenClaw",
+      "category": "developer",
+      "tags": [
+        "security",
+        "scanner",
+        "virustotal",
+        "compliance"
+      ],
+      "source": "official",
+      "path": "skills/security-scanner",
+      "install_size": "7KB",
+      "dependencies": [],
+      "status": "stable",
+      "installed": false,
+      "downloads": 0,
+      "rating": 4.8,
+      "last_updated": "2026-02-18",
+      "system_service": false,
+      "requires": "VirusTotal API Key"
     }
   ],
   "stats": {
